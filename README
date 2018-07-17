@@ -1,0 +1,41 @@
+Hash table class
+Implement a class HashTable to store std::strings with the following public methods. Note that your add, search, and remove functions must handle the situation where different strings map to the same hash value. This should be handled structurally by inserting (or finding) the value in the linked list at the given index. These methods must also verify that their argument is an acceptable string.
+
+Public methods
+Default constructor
+Create a hash table of capacity defaultCapacity.
+Constructor with a single int argument
+Create a hash table to store n items where n is the constructor’s single int parameter. The capacity of the table should be the smallest prime ≥2n. If n<1, throw a std::invalid_argument (defined in <stdexcept>).
+
+Copy constructor
+Construct a deep copy of its HashTable reference parameter.
+Destructor
+The default destructor should be sufficient.
+operator=
+Deep copy its HashTable reference parameter into this object and return a reference to this object after de-allocating any dynamic memory associated with the original contents of this object; if this object is the same as the parameter the operator should not copy it.
+This operator must handle the case where the number of buckets in the parameter differs from the number of buckets in *this. After the assignment, maxSize() == parameter.maxSize(), size() == parameter.size(), and for every element contained in parameter there is a copy in *this. The *this object will have a new compression function based upon parameter.maxSize() rather than the previous value of maxSize().
+
+add
+Verify the single string parameter. If the parameter is acceptable and it is not already in the table, add it to the HashTable; return true if the parameter was added (it was not already in the table), return false otherwise (the parameter was already in the table).
+remove
+Verify the single single string parameter. If the parameter is acceptable and it is in the HashTable, remove it; return true if the parameter value was found and removed, return false if the parameter value was not found in the table.
+search
+Verify the single single string parameter. If the parameter is acceptable, return true if it is contained in the HashTable, return false otherwise.
+size
+Return the number of items stored in the HashTable.
+capacity
+Return the (int) size of the HashTable’s underlying array.
+loadFactor
+Return the (float) load factor of the HashTable.
+keys
+Return a vector<string> containing all the entries in this table. Their order can be arbitrary but each element must occur exactly once.
+setunion
+Return a HashTable containing the set union of this table and its single HashTable reference parameter. The entries in the result table are deep copies of the entries in the original two tables.
+hash
+Compute the hash code for its string parameter. See the hash code description for the type of the result. This function does not depend upon any member variables and so is declared static.
+compress
+Given a hash code of type std::uint32_t, compress to the appropriate index for the capacity of this table. Unlike hash, this function refers to a member value of the instance, so it is not static.
+defaultCapacity
+A constant indicating the capacity of a default-constructed table. This constant is defined in the HashTable.h file given below.
+printTable
+Print the table contents on cout. 
